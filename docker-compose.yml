@@ -1,0 +1,30 @@
+services:
+
+  nginx:
+    build:
+      context: "./services/nginx"
+      dockerfile: Dockerfile
+    container_name: vanila_nginx
+    ports:
+     - 80:80
+    volumes:
+     - ./src:/var/www/html 
+    networks:
+      - library
+    depends_on:
+      - php
+
+  php:
+    build: 
+      context: "./services/php"
+      dockerfile: Dockerfile
+    container_name: vanila_php_c
+    volumes:
+     - ./src:/var/www/html
+    networks:
+      - library
+    ports:
+      - 8080:8080
+networks:
+  library:
+    driver: bridge
