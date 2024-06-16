@@ -7,7 +7,7 @@ class UserController
     public function __invoke()
     {
         $title = "User";
-        $user = "Amir";
+        $user = ['name' => 'Amir', 'id' => 1];
         $bookedBooks = (new BookedBook)->bookedByUser(1)->all();
         return view('users/show', compact('title', 'bookedBooks', 'user'));
     }

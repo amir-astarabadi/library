@@ -5,6 +5,7 @@ class HomeController
 {
     public function __invoke()
     {
-        return view('main');
+        $title = "Home";
+        return view('main', compact('title'));
     }
 }
